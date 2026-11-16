@@ -1,0 +1,197 @@
+@media (max-width: 599px) {
+  .entete-app {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    min-height: 64px;
+    padding: 8px 12px;
+  }
+
+  .marque {
+    gap: 7px;
+  }
+
+  .marque-symbole {
+    width: 34px;
+    height: 34px;
+  }
+
+  .marque-nom {
+    max-width: 75px;
+    font-size: 13px;
+  }
+
+  .stepper {
+    gap: 2px;
+    justify-content: center;
+  }
+
+  .stepper-etape {
+    min-width: 36px;
+    min-height: 40px;
+    padding: 7px;
+    font-size: 0;
+  }
+
+  .stepper-etape::first-letter {
+    font-size: 14px;
+  }
+
+  .stepper-etape.actif {
+    min-width: 92px;
+    font-size: 13px;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contenu-principal {
+    width: min(100% - 24px, 640px);
+    padding: 24px 0 28px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  .ecran {
+    gap: 20px;
+  }
+
+  .barre-actions {
+    position: sticky;
+    z-index: 4;
+    bottom: 0;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: 8px;
+    border-top: 1px solid var(--bordure);
+    background: color-mix(in srgb, var(--surface) 96%, transparent);
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    backdrop-filter: blur(14px);
+  }
+
+  .aide-action {
+    display: none;
+  }
+
+  .action-precedente,
+  .action-suivante {
+    width: 100%;
+    justify-self: stretch;
+    padding-inline: 8px;
+    font-size: 13px;
+  }
+
+  .pied-app {
+    padding-bottom: 12px;
+  }
+
+  .rappel-syntaxe {
+    padding: 13px;
+  }
+
+  .liste-syntaxe {
+    gap: 8px;
+  }
+
+  .liste-syntaxe li {
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .barre-dessin {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .commandes-zoom {
+    width: 100%;
+  }
+
+  .bouton-reset {
+    margin-left: auto;
+  }
+
+  .panneau-dessin-test .automate-svg {
+    min-width: 520px;
+  }
+}
+
+@media (max-width: 359px) {
+  .marque-nom {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .contenu-principal {
+    width: min(100% - 48px, 760px);
+    padding-top: 32px;
+  }
+
+  .grille-automates,
+  .grille-test {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panneau-infos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resume-etats,
+  .controle-puits {
+    grid-column: 1 / -1;
+  }
+
+  .panneau-dessin-test .automate-svg {
+    min-width: 620px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contenu-principal {
+    padding-top: 42px;
+  }
+
+  .formulaire-langage {
+    max-width: 680px;
+  }
+
+  .grille-automates {
+    grid-template-columns: minmax(0, 1.85fr) minmax(320px, 1fr);
+    align-items: start;
+    gap: 24px;
+  }
+
+  .panneau-dessin {
+    position: sticky;
+    top: 96px;
+  }
+
+  .grille-test {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: 28px;
+  }
+
+  .panneau-dessin-test {
+    position: sticky;
+    top: 96px;
+  }
+
+  .panneau-dessin-test .automate-svg {
+    min-width: 660px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contenu-principal {
+    padding-top: 48px;
+  }
+
+  .panneau-dessin-test .automate-svg {
+    min-width: 720px;
+  }
+}

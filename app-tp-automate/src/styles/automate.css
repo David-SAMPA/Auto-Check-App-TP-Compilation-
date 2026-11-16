@@ -1,0 +1,114 @@
+.automate-svg {
+  overflow: visible;
+  background: transparent;
+}
+
+.transition-svg {
+  fill: none;
+  stroke: var(--texte-secondaire);
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.transition-svg.epsilon {
+  stroke-dasharray: 5 4;
+}
+
+.transition-svg.chemin {
+  stroke: var(--chemin);
+  stroke-width: 3.2;
+}
+
+.fleche-svg {
+  fill: var(--texte-secondaire);
+}
+
+.etats-svg circle {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.etat-svg text {
+  fill: var(--texte);
+  font-family: var(--monospace);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.etat-svg.final circle {
+  fill: var(--fond-succes);
+  stroke: var(--succes);
+}
+
+.etat-svg .cercle-final-interieur {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.etat-svg.puits circle {
+  fill: var(--surface-secondaire);
+  stroke: var(--texte-secondaire);
+  stroke-dasharray: 4 3;
+}
+
+.etat-svg.initial circle:first-child {
+  fill: var(--fond-accent);
+}
+
+.etat-svg.chemin circle {
+  stroke: var(--chemin);
+  stroke-width: 3;
+}
+
+.etat-svg .halo-courant {
+  fill: color-mix(in srgb, var(--chemin) 16%, transparent);
+  stroke: var(--chemin);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  animation: halo-courant 900ms ease-in-out infinite alternate;
+}
+
+.etat-svg.courant circle:not(.halo-courant) {
+  stroke: var(--chemin);
+  stroke-width: 3;
+}
+
+@keyframes halo-courant {
+  from { opacity: 0.45; }
+  to { opacity: 1; }
+}
+
+.etiquette-transition,
+.etiquette-initiale {
+  fill: var(--texte-secondaire);
+  font-family: var(--monospace);
+  font-size: 12px;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-linejoin: round;
+  stroke-width: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etat-svg .halo-courant {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+.etiquette-transition.etiquette-epsilon {
+  font-style: italic;
+}
+
+.etiquette-transition.chemin {
+  fill: var(--chemin);
+  font-weight: 750;
+}
+
+.etiquette-initiale {
+  fill: var(--accent);
+  font-family: var(--police);
+  font-size: 10px;
+}
