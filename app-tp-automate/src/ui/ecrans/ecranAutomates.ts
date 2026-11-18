@@ -103,15 +103,6 @@ export function creerEcranAutomates(entree: EntreeAutomates): HTMLElement {
     panneauInfos.append(partitions)
   }
 
-  const resume = element('section', { classe: 'resume-etats', attributs: { 'aria-label': 'Résumé de minimisation' } })
-  resume.append(
-    element('h2', { texte: 'En bref' }),
-    element('p', { texte: `${resultat.resume.etatsAfdComplet} états au départ, ${resultat.resume.etatsMinimal} après simplification.` }),
-    element('p', { classe: 'texte-secondaire', texte: 'Le langage reconnu ne change pas.' }),
-    element('p', { classe: 'texte-secondaire', texte: `Étapes intermédiaires : ${resultat.resume.etatsAfn} états dans le premier automate, puis ${resultat.resume.etatsAfd} dans le déterministe.` }),
-  )
-  panneauInfos.append(resume)
-
   if (resultat.puitsAjoute) {
     const controlePuits = element('label', { classe: 'controle-puits' })
     const casePuits = element('input', { attributs: { type: 'checkbox', checked: String(entree.masquerPuits) } })

@@ -2,7 +2,6 @@ import type { ResultatPipeline } from '../algo/pipeline'
 import type { verdict } from '../algo/reconnaissance/verdict'
 import type { ErreurSaisie } from '../model/types'
 
-export type Theme = 'light' | 'dark'
 export type VueAutomate = 'AFN-ε' | 'AFD' | 'AFD minimal'
 export type VitesseSimulation = 'lent' | 'normal' | 'rapide'
 export type ResultatMot = Exclude<ReturnType<typeof verdict>, { erreur: unknown }>
@@ -14,7 +13,6 @@ export interface EntreeHistorique {
 
 export interface AppState {
   etape: 1 | 2 | 3
-  theme: Theme
   alphabetSaisie: string
   expression: string
   resultat: Extract<ResultatPipeline, { ok: true }> | null
@@ -30,10 +28,9 @@ export interface AppState {
   historique: EntreeHistorique[]
 }
 
-export function creerEtatInitial(theme: Theme): AppState {
+export function creerEtatInitial(): AppState {
   return {
     etape: 1,
-    theme,
     alphabetSaisie: 'a, b',
     expression: '(a|b)*abb',
     resultat: null,

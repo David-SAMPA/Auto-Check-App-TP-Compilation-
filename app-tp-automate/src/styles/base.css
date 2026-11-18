@@ -16,9 +16,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(ellipse at 2% 2%, color-mix(in srgb, var(--accent) 5%, transparent), transparent 30rem),
-    var(--fond);
+  background: var(--fond);
 }
 
 button,
@@ -58,13 +56,13 @@ h3 {
 
 h1 {
   margin-bottom: 12px;
-  font-size: 32px;
-  font-weight: 680;
+  font-size: 28px;
+  font-weight: 650;
 }
 
 h2 {
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 650;
 }
 

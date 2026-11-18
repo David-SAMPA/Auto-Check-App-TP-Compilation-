@@ -29,7 +29,7 @@ Le build est généré dans `dist/` et utilise des chemins relatifs pour pouvoir
 - `|` désigne l'union et `+` signifie « une fois ou plus »; cette notation devra être confirmée auprès de l'enseignant.
 - La minimisation part de l'AFD complété; les mots sont évalués sur cet automate complet.
 - Les positions dans les messages d'erreur commencent à 1.
-- Le stockage du thème est facultatif et protégé contre les restrictions du navigateur.
+- L'interface n'a qu'un thème clair, volontairement sobre et sans effets décoratifs.
 - L'interface est conçue mobile-first; les dessins et tableaux larges défilent à l'intérieur de leur propre conteneur.
 
 La version desktop, Electron et le site vitrine sont hors périmètre de cette phase. Le code algorithmique ne dépend pas du DOM et reste séparé de l'interface.

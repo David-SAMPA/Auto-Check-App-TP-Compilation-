@@ -1,32 +1,21 @@
 import { construireTout } from '../algo/pipeline'
 import { verdict } from '../algo/reconnaissance/verdict'
 import { validerAlphabet, validerExpression } from '../regex/validateur'
-import { creerEtatInitial, creerMagasin, type Theme, type VueAutomate, type VitesseSimulation } from '../state/appState'
+import { creerEtatInitial, creerMagasin, type VueAutomate, type VitesseSimulation } from '../state/appState'
 import { creerMessage } from './composants/message'
 import { creerStepper } from './composants/stepper'
-import { creerThemeToggle } from './composants/themeToggle'
 import { creerEcranAutomates } from './ecrans/ecranAutomates'
 import { creerEcranLangage } from './ecrans/ecranLangage'
 import { creerEcranTest } from './ecrans/ecranTest'
 import { element, bouton } from './utils/dom'
 
-function lireThemeInitial(): Theme {
-  try {
-    const memorise = localStorage.getItem('auto-check-theme')
-    if (memorise === 'light' || memorise === 'dark') return memorise
-  } catch {
-    // Le thème système reste disponible si le stockage est désactivé.
-  }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
-function themeValide(alphabet: string, expression: string): boolean {
+function saisieValide(alphabet: string, expression: string): boolean {
   const resultatAlphabet = validerAlphabet(alphabet)
   return resultatAlphabet.ok && validerExpression(expression, resultatAlphabet.symboles).ok
 }
 
 export function monterApplication(conteneur: HTMLElement): void {
-  const magasin = creerMagasin(creerEtatInitial(lireThemeInitial()))
+  const magasin = creerMagasin(creerEtatInitial())
   let minuteurSimulation: number | undefined
   const delaisSimulation: Record<VitesseSimulation, number> = { lent: 1400, normal: 850, rapide: 400 }
 
@@ -81,7 +70,6 @@ export function monterApplication(conteneur: HTMLElement): void {
 
   const rendre = (): void => {
     const etat = magasin.lire()
-    document.documentElement.dataset.theme = etat.theme
     const coquille = element('div', { classe: 'app-shell' })
 
     const entete = element('header', { classe: 'entete-app' })
@@ -98,16 +86,7 @@ export function monterApplication(conteneur: HTMLElement): void {
         rendre()
       }
     })
-    entete.append(marque, stepper, creerThemeToggle(etat.theme, () => {
-      const theme: Theme = etat.theme === 'dark' ? 'light' : 'dark'
-      try {
-        localStorage.setItem('auto-check-theme', theme)
-      } catch {
-        // La préférence ne persiste pas si le stockage du navigateur est indisponible.
-      }
-      magasin.modifier({ theme })
-      rendre()
-    }))
+    entete.append(marque, stepper)
 
     const principal = element('main', { classe: 'contenu-principal' })
     const actions = element('footer', { classe: 'barre-actions', attributs: { 'aria-label': 'Navigation du parcours' } })
@@ -135,11 +114,11 @@ export function monterApplication(conteneur: HTMLElement): void {
           return
         }
         arreterSimulation()
-        magasin.modifier(creerEtatInitial(courant.theme))
+        magasin.modifier(creerEtatInitial())
         rendre()
       },
     )
-    suivant.disabled = etat.etape === 1 && !themeValide(etat.alphabetSaisie, etat.expression)
+    suivant.disabled = etat.etape === 1 && !saisieValide(etat.alphabetSaisie, etat.expression)
     if (etat.etape === 1) aideAction.textContent = 'Saisissez un alphabet et une expression valides pour continuer.'
     actions.append(precedent, aideAction, suivant)
 
@@ -246,8 +225,7 @@ export function monterApplication(conteneur: HTMLElement): void {
       principal.append(creerMessage('info', 'Commencez par définir un alphabet et une expression.'))
     }
 
-    const pied = element('p', { classe: 'pied-app', texte: 'Auto-Check · Calculs locaux, sans connexion réseau' })
-    coquille.append(entete, principal, actions, pied)
+    coquille.append(entete, principal, actions)
     conteneur.replaceChildren(coquille)
   }
 

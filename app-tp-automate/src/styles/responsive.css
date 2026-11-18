@@ -1,6 +1,6 @@
 @media (max-width: 599px) {
   .entete-app {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr);
     gap: 8px;
     min-height: 64px;
     padding: 8px 12px;
@@ -41,11 +41,6 @@
     font-size: 13px;
   }
 
-  .theme-toggle {
-    width: 40px;
-    height: 40px;
-  }
-
   .contenu-principal {
     width: min(100% - 24px, 640px);
     padding: 24px 0 28px;
@@ -82,23 +77,6 @@
     justify-self: stretch;
     padding-inline: 8px;
     font-size: 13px;
-  }
-
-  .pied-app {
-    padding-bottom: 12px;
-  }
-
-  .rappel-syntaxe {
-    padding: 13px;
-  }
-
-  .liste-syntaxe {
-    gap: 8px;
-  }
-
-  .liste-syntaxe li {
-    gap: 6px;
-    font-size: 12px;
   }
 
   .barre-dessin {
@@ -140,7 +118,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .resume-etats,
   .controle-puits {
     grid-column: 1 / -1;
   }
@@ -153,10 +130,6 @@
 @media (min-width: 1024px) {
   .contenu-principal {
     padding-top: 42px;
-  }
-
-  .formulaire-langage {
-    max-width: 680px;
   }
 
   .grille-automates {
